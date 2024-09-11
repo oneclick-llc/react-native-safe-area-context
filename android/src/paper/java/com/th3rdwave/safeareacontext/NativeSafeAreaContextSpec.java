@@ -21,12 +21,19 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nullable;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Promise;
+import kotlin.Unit;
 
 public abstract class NativeSafeAreaContextSpec extends ReactContextBaseJavaModule
     implements ReactModuleWithSpec, TurboModule {
   public NativeSafeAreaContextSpec(ReactApplicationContext reactContext) {
     super(reactContext);
   }
+
+  @ReactMethod
+  @DoNotStrip
+  protected abstract Unit getWindowMetrics(Promise promise);
 
   protected abstract Map<String, Object> getTypedExportedConstants();
 
